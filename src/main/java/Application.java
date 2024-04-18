@@ -9,7 +9,7 @@ public class Application {
         return UnitCost*InterestRate/100;
     }
     public static float CalculateAnnualDemand(float LeadTime,float LeadTimeDemand){
-        return (LeadTimeDemand/LeadTime)*(12/LeadTime);
+        return (LeadTimeDemand*(12/LeadTime));
     }
 
     public static void main(String[] args) {
