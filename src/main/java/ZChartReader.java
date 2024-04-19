@@ -27,7 +27,7 @@ public class ZChartReader {
         }
     }
     public Double getZValueFromF(Double inputValue){
-        double minDifference=Math.abs(inputValue-fValues.get(0));
+        double minDifference=Math.abs(inputValue-fValues.getFirst());
         double difference;
         int index = 0;
         for (int i=0;i<fValues.size();i++){
@@ -41,7 +41,7 @@ public class ZChartReader {
     }
 
     public Double getLValueFromF(Double inputValue){
-        double minDifference=Math.abs(inputValue-fValues.get(0));
+        double minDifference=Math.abs(inputValue-fValues.getFirst());
         double difference;
         int index = 0;
         for (int i=0;i<fValues.size();i++){
