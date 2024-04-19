@@ -39,7 +39,7 @@ public class Application {
         double FR0=1-Q0*HoldingCost/(PenaltyCost*(12/LeadTime*LeadTimeDemand));
         double zValue=reader.getZValueFromF(FR0);
         double R0=zValue*LeadTimeStandardDeviation+LeadTimeDemand;
-        double nR0= reader.getLValueFromF(FR0)*OrderingCost;
+        double nR0= reader.getLValueFromF(FR0)*LeadTimeStandardDeviation;
 
         int counter=1;
 
@@ -55,8 +55,8 @@ public class Application {
             Q=Math.sqrt(2*((12/LeadTime*LeadTimeDemand)*(OrderingCost+PenaltyCost*nR)/HoldingCost));
             FR=1-Q*HoldingCost/(PenaltyCost*(12/LeadTime*LeadTimeDemand));
             zedValue=reader.getZValueFromF(FR);
-            R=zedValue*OrderingCost+LeadTimeDemand;
-            nR=reader.getLValueFromF(FR)*OrderingCost;
+            R=zedValue*LeadTimeStandardDeviation+LeadTimeDemand;
+            nR=reader.getLValueFromF(FR)*LeadTimeStandardDeviation;
             counter++;
         }
         System.out.println("Optimal Lot Size: "+Q);
