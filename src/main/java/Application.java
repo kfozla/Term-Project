@@ -38,7 +38,7 @@ public class Application {
         double Q0= Math.sqrt((2*OrderingCost*(12/LeadTime*LeadTimeDemand))/HoldingCost);
         double FR0=1-Q0*HoldingCost/(PenaltyCost*(12/LeadTime*LeadTimeDemand));
         double zValue=reader.getZValueFromF(FR0);
-        double R0=zValue*OrderingCost+LeadTimeDemand;
+        double R0=zValue*LeadTimeStandardDeviation+LeadTimeDemand;
         double nR0= reader.getLValueFromF(FR0)*OrderingCost;
 
         int counter=1;
