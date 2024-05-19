@@ -53,4 +53,17 @@ public class ZChartReader {
         }
         return lValues.get(index);
     }
+    public Double getFValue(Double inputValue){
+        double minDifference=Math.abs(inputValue-fValues.getFirst());
+        double difference;
+        int index = 0;
+        for (int i=0;i<fValues.size();i++){
+            difference=Math.abs(inputValue-fValues.get(i));
+            if(difference<minDifference){
+                minDifference=difference;
+                index=i;
+            }
+        }
+        return fValues.get(index);
+    }
 }

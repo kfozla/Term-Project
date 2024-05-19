@@ -6,7 +6,7 @@ public class Application {
 
     //CALCULATING HOLDING COST AND ANNUAL DEMAND
     public static float CalculateHoldingCost(float UnitCost, float InterestRate){
-        return UnitCost*InterestRate/100;
+        return (float) UnitCost*InterestRate;
     }
     public static float CalculateAnnualDemand(float LeadTime,float LeadTimeDemand){
         return (LeadTimeDemand*(12/LeadTime));
@@ -22,9 +22,9 @@ public class Application {
         float OrderingCost = scanner.nextFloat();
         System.out.println("Enter Penalty Cost: ");
         float PenaltyCost = scanner.nextFloat();
-        System.out.println("Enter Annual Interest Rate: ");
+        System.out.println("Enter Annual Interest Rate (use , for separation): ");
         float InterestRate = scanner.nextFloat();
-        System.out.println("Enter Lead Time: ");
+        System.out.println("Enter Lead Time in months: ");
         float LeadTime = scanner.nextFloat();
         System.out.println("Enter Lead Time Demand: ");
         float LeadTimeDemand = scanner.nextFloat();
@@ -44,7 +44,7 @@ public class Application {
         int counter=1;
 
         double Q=0;
-        double FR;
+        double FR=0;
         double zedValue;
         double R=0;
         double nR=nR0;
@@ -61,10 +61,15 @@ public class Application {
         }
         System.out.println("Optimal Lot Size: "+Q);
         System.out.println("Reorder Point: "+R);
-        System.out.println("Holding Cost: "+ HoldingCost);
-        System.out.println("Annual Demand: "+ AnnualDemand);
         System.out.println("Total Iteration: "+counter);
-
+        System.out.println("Safety Stock: " + (R-LeadTimeDemand));
+        System.out.println("Annual Holding Cost: "+ (HoldingCost*(Q/2+R-LeadTimeDemand)));
+        System.out.println("Annual Setup Cost: "+(OrderingCost*AnnualDemand/Q));
+        System.out.println("Annual Penalty Cost: "+ ((PenaltyCost*AnnualDemand*nR)/Q));
+        System.out.println("average Time between the placement of orders:"+ (Q/AnnualDemand)+" year");
+        System.out.println("Number of Orders:"+(AnnualDemand/Q));
+        System.out.println("The proportion of order cycles which no stock out occurs: %"+(reader.getFValue(FR)*100));
+        System.out.println("The proportion of demand that are not met: %"+ (100*nR/Q));
     }
 
 
